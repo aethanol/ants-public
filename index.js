@@ -22,7 +22,7 @@ if(process.argv[2] === '--debug'){
 }
 else {
   //initialize the game to play (not interactively selected yet)
-  var colony = ants.AntColony.createTestColony();
+  var colony = ants.AntColony.createDefaultColony();
   var hive = ants.Hive.createTestHive();
   var game = new ants.AntGame(colony, hive);
 
