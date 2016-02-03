@@ -6,7 +6,7 @@ The below questions should be answered (in detail!) regarding your submission!
 
 
 ##### 1. Spend some time reading through the provided code _carefully_ to make sure you understand it. After you've read the code, in the space below list any _design patterns_ we discussed in class that you can find (note that you may need to revisit the code after each lecture). Be clear about which pattern is used, where, and _why it is being employed_.
-> A composite pattern is being used for creating essentially the entire game, the complex composite is the Ant game, which creates a AntColony which creates Places that contain Insects. I also think that there is a factory pattern being used 
+> A composite pattern is being used for creating essentially the entire game, the complex composite is the Ant game, which creates a AntColony which creates Places that contain Insects. There are also factory patterns being used to create places, and the ant colony
 
 
 ##### 2. After you've read the code, is there anywhere that it could be re-architected (e.g., using design patterns) to be more changeable or reusable? 
@@ -21,7 +21,9 @@ The below questions should be answered (in detail!) regarding your submission!
 > I mostly used Strategy designs and a single factory to create the ants and dynamically assign strategies.
 
 ##### 5. Specifically, discuss your use of object-oriented design patterns in your program. What patterns did you use in your implementation (be specific)? Why? Is there anywhere you explicitly decided _not_ to use a pattern (e.g., because doing so would have made it more difficult to change the code later, etc)? Be detailed---you should reflect carefully on your own design and architecture work!
-> First I created objects 
+> First I created an absract Action class and subclassed each action that the ants would implement. I stored these all in an object, like Joel did for each ants class. Then I made a factory object that would dynamically create each ant when it was placed, and then apply a strategy based on what strategy string was specified in each ant class. In the factory a new ant object is created specified by the command line user, and then a new Action object is created. I had originally tried to implement container, water, and invisible strategies but for some reason the container strategy wasn't working properly so I ended up just subclassing Ant to Container and then Bodyguard subclasses Container. I know this isn't a very good desin pattern, but I was short on time since I spent like 5 hours trying to get the container strategy to work. ugh. I explicityly decided to not use a decorator pattern for the ants because they were already subclassed. I would have had to rewritten a lot of the code.
+I also used a Singleton for the Queen by specifying two Symbol() objects scoped to this module that the constructror of Queen would check and if the right symbol wasn't specified, it wouldn't create a Queen.
+I also kept track of if the queen was deployed in the Factory that I was creating the ants in.
 
 
 ##### 6. Approximately how many hours did it take you to complete this assignment? #####
